@@ -1,0 +1,70 @@
+@import "palette.scss";
+
+.top-page {
+    height: 100vh;
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: ". .";
+}
+
+.top-page .presentation {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: $imperial-red;
+}
+
+.top-page .presentation h1 {
+    text-transform: uppercase;
+    font-family: 'Permanent Marker', cursive;
+    font-style: italic;
+    font-size: 180px;
+    user-select: none;
+}
+
+.top-page .presentation p {
+    font-size: 40px;
+    text-align: center;
+}
+
+.top-page .presentation .medias {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+}
+
+.top-page .presentation .medias .media a {
+    color: $imperial-red;
+    font-size: 50px;
+}
+
+.top-page .logo {
+    position: relative;
+    background-color: $imperial-red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-page .logo:after {
+    content: "";
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    right: -5px;
+    cursor: col-resize;
+}
+
+.top-page .logo img {
+    width: 60%;
+    animation: wobbling 2s ease-in-out infinite alternate forwards;
+}
+
+@keyframes wobbling {
+    from { transform: rotate(-10deg); }
+    to { transform: rotate(10deg); }
+}

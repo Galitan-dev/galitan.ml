@@ -1,0 +1,13 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Varela+Round&display=swap');
+@import "palette.scss";
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+}
+
+body {
+    background-color: $prussian-blue;
+}
