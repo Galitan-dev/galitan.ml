@@ -1,0 +1,40 @@
+$onyx: #393e41ff;
+$timberwolf: #d3d0cbff;
+$platinum: #e7e5dfff;
+$keppel: #44bba4ff;
+$maize-crayola: #e7bb41ff;
+
+.lets-build {
+    background-color: $onyx;
+    display: flex;
+    flex-flow: column;
+}
+
+.lets-build .content {
+    display: grid;
+    margin: 50px;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    grid-gap: 1rem;
+}
+
+.lets-build h1 {
+    color: $maize-crayola;
+    font-size: 80px;
+    margin: 50px;
+}
+
+.lets-build p {
+    color: $maize-crayola;
+    font-size: 50px;
+}
+
+.lets-build img {
+    width: 100%;
+    animation: floating 2s ease-in-out infinite alternate forwards;
+}
+
+@keyframes floating {
+    from { transform: translateY(10px) }
+    to { transform: translateY(-30px) }
+}

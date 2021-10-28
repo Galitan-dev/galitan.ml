@@ -1,7 +1,10 @@
-@import "palette.scss";
+$onyx: #393e41ff;
+$timberwolf: #d3d0cbff;
+$platinum: #e7e5dfff;
+$keppel: #44bba4ff;
+$maize-crayola: #e7bb41ff;
 
 .top-page {
-    height: 100vh;
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     grid-template-rows: 1fr; 
@@ -15,12 +18,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    color: $imperial-red;
+    color: $onyx;
 }
 
 .top-page .presentation h1 {
     text-transform: uppercase;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Permanent Marker', sans-serif;
     font-style: italic;
     font-size: 180px;
     user-select: none;
@@ -37,14 +40,19 @@
     justify-content: space-around;
 }
 
-.top-page .presentation .medias .media a {
-    color: $imperial-red;
+.top-page .presentation .medias a.media {
+    color: $onyx;
     font-size: 50px;
+    transition: .3s cubic-bezier(.75,0,.3,1);
+}
+
+.top-page .presentation .medias a.media:hover {
+    transform: scale(1.5);
 }
 
 .top-page .logo {
     position: relative;
-    background-color: $imperial-red;
+    background-color: $maize-crayola;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,19 +60,38 @@
 
 .top-page .logo:after {
     content: "";
-    width: 10px;
+    width: 2vw;
     height: 100%;
     position: absolute;
-    right: -5px;
+    right: -2vw;
     cursor: col-resize;
 }
 
 .top-page .logo img {
-    width: 60%;
-    animation: wobbling 2s ease-in-out infinite alternate forwards;
+    user-select: none;
+    position: absolute;
+    width: 80%;
+    transition: .2s;
+}
+
+.top-page.left-is-small .logo img {
+    width: calc(140%);
+    transform: rotate(-90deg);
 }
 
 @keyframes wobbling {
     from { transform: rotate(-10deg); }
     to { transform: rotate(10deg); }
+}
+
+@media screen and (max-width: 950px) {
+    .top-page .logo {
+        display: none;
+    }
+    .top-page .presentation {
+        width: 100vw;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
 }

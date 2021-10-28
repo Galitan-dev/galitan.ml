@@ -1,6 +1,11 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Varela+Round&display=swap');
-@import "palette.scss";
+
+$onyx: #393e41ff;
+$timberwolf: #d3d0cbff;
+$platinum: #e7e5dfff;
+$keppel: #44bba4ff;
+$maize-crayola: #e7bb41ff;
 
 * {
     margin: 0;
@@ -8,6 +13,22 @@
     font-family: 'Varela Round', sans-serif;
 }
 
-body {
-    background-color: $prussian-blue;
+html, body {
+    background-color: $platinum;
+    overflow: hidden;
+}
+
+.container {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+}
+
+section { 
+    min-height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
 }

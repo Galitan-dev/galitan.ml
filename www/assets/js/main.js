@@ -1,8 +1,3 @@
-VanillaTilt.init(document.querySelectorAll(".media"), {
-    max: 1,
-    scale: 1.5
-});
-
 const topPage = document.querySelector(".top-page"),
     rect = topPage.getBoundingClientRect();
 
@@ -12,13 +7,20 @@ let holding = false, x = 42, delay = -1, transiting = false;
 topPage.addEventListener("mousedown", e => {
     if (transiting) return;
     const newX = Math.round(e.clientX / rect.width * 100);
-    if (Math.abs(x - newX) < 1) holding = true;
+    if (Math.abs(x - newX) < 2) holding = true;
+    delay = -1;
+    console.log("hey");
 });
 
 topPage.addEventListener("mousemove", e => {
+    const oldX = x;
     if (!holding) return;
-    x = fork(e.clientX / rect.width * 100, 5, 55);
-    topPage.style.gridTemplateColumns = `${x}% ${100 - x}%`
+    x = fork(e.clientX / rect.width * 100, 5, 63);
+    topPage.style.gridTemplateColumns = `${x}% ${100 - x}%`;
+    if (oldX >= 20 && x < 20) topPage.classList.add('left-is-small');
+    else if (oldX <= 20 && x > 20) topPage.classList.remove('left-is-small');
+    if (oldX <= 55 && x > 55) topPage.querySelector("h1").innerHTML = "Hey!";
+    else if (oldX >= 55 && x < 55) topPage.querySelector("h1").innerHTML = "Salut!";
 });
 
 topPage.addEventListener("mouseup", e => {
@@ -33,10 +35,12 @@ setInterval(() => {
     transiting = true;
     topPage.style.transition = `${trans}ms`;
     topPage.style.gridTemplateColumns = "42% 58%";
+    topPage.classList.remove('left-is-small');
     setTimeout(() => {
         topPage.style.transition = "";
         x = 42;
         transiting = false;
+        topPage.querySelector("h1").innerHTML = "Salut!";
     }, trans);
 
     delay = -1;
