@@ -1,0 +1,109 @@
+$onyx: #393e41ff;
+$timberwolf: #d3d0cbff;
+$platinum: #e7e5dfff;
+$keppel: #44bba4ff;
+$maize-crayola: #e7bb41ff;
+
+.technologies {
+    background-color: $platinum;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 100px;
+}
+
+.technologies h1 {
+    font-size: 100px;
+    color: $onyx;
+}
+
+.technologies .tree {
+    position: relative;
+    height: 350px;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.technologies .tree .trunk {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 25px;
+    width: calc(74px + 195px * var(--branches) + 150px);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: $onyx;
+}
+
+.technologies .tree .trunk::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 25px;
+    right: -200px;
+}
+
+.technologies .tree .branches {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(calc(var(--branches) / 2), 1fr);
+    grid-template-rows: repeat(2, 50%);
+    grid-column-gap: 150px;
+    padding-left: 100px;
+    margin-right: 500px;
+}
+.technologies .tree .branch {
+    background-color: $onyx;
+    width: 200px;
+    height: 25px;
+    margin: 0 20px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.technologies .tree .branch::before {
+    display: block;
+    content: "";
+    background-color: $onyx;
+    height: 26px;
+    width: 190px;
+}
+
+.technologies .tree .branch:not([data-row-2]) {
+    transform: translate(20px, 70px);
+}
+
+.technologies .tree .branch:not([data-row-2])::before {
+    transform: translate(-171px, 46px) rotate(-30deg);
+}
+
+.technologies .tree .branch[data-row-2] {
+    grid-row: 2;
+    transform: translate(calc(100% + 15px), 80px);
+}
+
+.technologies .tree .branch[data-row-2]::before {
+    transform: translate(-171px, -46px) rotate(30deg);
+}
+
+.technologies .tree .branch img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(25%, calc(-25% - 10px));
+    height: 80px;
+    $w: 5px;
+    $b: 3px;
+    filter: drop-shadow((+$w) (+$w) $b $onyx) 
+            drop-shadow((-$w) (+$w) $b $onyx)
+            drop-shadow((+$w) (-$w) $b $onyx) 
+            drop-shadow((-$w) (-$w) $b $onyx);
+}
+
+.technologies .tree .branch img[data-white-bg] {
+    background-color: $platinum;
+    border-radius: 50%;
+    width: 80px;
+}
